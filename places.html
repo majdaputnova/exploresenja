@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My favourite places to visit in Senja Island | Explore Senja Island</title>
+    <meta name="description" content="Explore the must-visit places in Senja Island, Norway. From scenic viewpoints to hidden trails, plan your perfect Nordic adventure.">
+    <meta name="keywords" content="places to visit Senja, Senja attractions, Norway travel guide, Senja scenic spots, hiking in Senja, travel tips Norway">
+    <meta name="author" content="Magdalena Putnova">
+    <meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Kumbh Sans', sans-serif;
+        }
+        body {
+            background-color: #141414;
+            color: #fff;
+        }
+        .navbar {
+            background: #131313;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .navbar__container {
+            display: flex;
+            justify-content: space-between;
+            height: 80px;
+            z-index: 1;
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+        .navbar__menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            text-align: center;
+        }
+        .navbar__item {
+            height: 80px;
+        }
+        .navbar__links {
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            padding: 0 1rem;
+            height: 100%;
+        }
+        .navbar__btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 1rem;
+            width: 100%;
+        }
+        .button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            padding: 10px 20px;
+            height: 100%;
+            width: 100%;
+            border: none;
+            outline: none;
+            border-radius: 4px;
+            background: #6495ED;
+            color: #fff;
+        }
+        .button:hover {
+            background: #00008B;
+            transition: all 0.3s ease;
+        }
+        .navbar__links:hover {
+            color: #6495ED;
+            transition: all 0.3s ease;
+        }
+        @media screen and (max-width: 960px) {
+            .navbar__menu {
+                display: grid;
+                grid-template-columns: auto;
+                margin: 0;
+                width: 100%;
+                position: absolute;
+                top: -1000px;
+                opacity: 0;
+                transition: all 0.5s ease;
+                height: 50vh;
+                z-index: -1;
+                background: #131313;
+            }
+            .navbar__menu.active {
+                background: #131313;
+                top: 100%;
+                opacity: 1;
+                transition: all 0.5s ease;
+                z-index: 99;
+                height: 50vh;
+                font-size: 1.6rem;
+            }
+            #mobile-menu {
+                position: absolute;
+                top: 20%;
+                right: 5%;
+                transform: translate(5%, 20%);
+                cursor: pointer;
+            }
+            .navbar__toggle .bar {
+                width: 25px;
+                height: 3px;
+                margin: 5px auto;
+                background: #fff;
+                transition: all 0.3s ease-in-out;
+            }
+            #mobile-menu.is-active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            #mobile-menu.is-active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            #mobile-menu.is-active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+        .main {
+            background-color: #141414;
+        }
+        .main__container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            margin: 0 auto;
+            height: 90vh;
+            background-color: #141414;
+            z-index: 1;
+            width: 100%;
+            max-width: 1300px;
+            padding: 0 50px;
+        }
+        .main__content h1 {
+            font-size: 4rem;
+            background-image: linear-gradient(to top, #00008B 0%, #6495ED 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .main__content h2 {
+            font-size: 4rem;
+            background-image: linear-gradient(to top, #6495ED 0%, #F0FFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .main__content p {
+            margin-top: 1rem;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+
+        }
+        .main__btn {
+            font-size: 1rem;
+            background-image: linear-gradient(to top, #00008B 0%, #6495ED 100%);
+            padding: 14px 32px;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            margin-top: 2rem;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.35s;
+            outline: none;
+        }
+        .main__btn a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .map__img--container {
+            text-align: center;
+        }
+        #map__img {
+            height: 80%;
+            width: 80%;
+        }
+        .places__content {
+    background-color: #fff; 
+    padding: 2rem 1rem; 
+    margin: 3rem 0; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.places__content:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); 
+}
+.places__content h1 {
+    font-size: 3rem; 
+    font-weight: 700;
+    color: #6495ED; 
+    text-transform: uppercase; 
+    margin-bottom: 1.5rem; 
+    background-image: linear-gradient(to top, #00008B 0%, #6495ED 100%); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    letter-spacing: 2px; 
+}
+.places__content p {
+    font-size: 1.3rem; 
+    color: #141414; 
+    font-weight: 600;
+    margin-top: 1rem; 
+    line-height: 1.6; 
+    text-align: center; 
+    max-width: 600px; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+        .segla__img--container{
+    text-align: center;
+    }
+ #segla__img{
+    height: 70%;
+    width: 70%;
+ }
+      .places__content {
+    background-color: #fff; 
+    padding: 2rem 1rem; 
+    margin: 3rem 0; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.places__content:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); 
+}
+.places__content h1 {
+    font-size: 3rem; 
+    font-weight: 700;
+    color: #6495ED; 
+    text-transform: uppercase; 
+    margin-bottom: 1.5rem; 
+    background-image: linear-gradient(to top, #00008B 0%, #6495ED 100%); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    letter-spacing: 2px; 
+}
+.places__content p {
+    font-size: 1.3rem; 
+    color: #141414; 
+    font-weight: 600;
+    margin-top: 1rem; 
+    line-height: 1.6; 
+    text-align: center; 
+    max-width: 600px; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+        .husfjellet__img--container{
+    text-align: center;
+    }
+ #husfjellet__img{
+    height: 70%;
+    width: 70%;
+}
+.places__content {
+    background-color: #fff; 
+    padding: 2rem 1rem; 
+    margin: 3rem 0; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.places__content:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); 
+}
+.places__content h1 {
+    font-size: 3rem; 
+    font-weight: 700;
+    color: #6495ED; 
+    text-transform: uppercase; 
+    margin-bottom: 1.5rem; 
+    background-image: linear-gradient(to top, #00008B 0%, #6495ED 100%); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    letter-spacing: 2px; 
+}
+.places__content p {
+    font-size: 1.3rem; 
+    color: #141414; 
+    font-weight: 600;
+    margin-top: 1rem; 
+    line-height: 1.6; 
+    text-align: center; 
+    max-width: 600px; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+.tetinden__img--container{
+    text-align: center;
+    margin-bottom: 1rem;
+    }
+ #tetinden__img{
+    height: 70%;
+    width: 70%;
+}
+/* Footer CSS */
+ .footer__container{
+    background-color: #3e4444 ;
+    padding: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+ .website__rights{
+    color: #fff ;
+ }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="C:\Majdinka\DCU MINT\Web design\combined css and html.html"class="navbar__links">Home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="C:\Majdinka\DCU MINT\Web design\places.html" class="navbar__links">Places</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="C:\Majdinka\DCU MINT\Web design\gallery.html" class="navbar__links">Gallery</a>
+                </li>
+                <li class="navbar__button">
+                    <a href="C:\Majdinka\DCU MINT\Web design\contact.html" class="button">Contact me</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="main">
+        <div class="main__container">
+            <div class="main__content">
+                <h1>WHAT YOU HAVE TO VISIT</h1>
+                <h2>IN SENJA ISLAND</h2>
+                <p>Discover the most beautiful places in Senja</p>
+            </div>
+            <div class="map__img--container">
+                <img src="C:\Majdinka\DCU MINT\Web design\Images\map.jpg" alt="map" id="map__img" />
+            </div>
+        </div>
+            <div class="places__content">
+                <h1>1. SEGLA</h1>
+                <p> Segla is one of Norway's most iconic peaks and it offers breathtaking views of the surrounding landscapes. </p>
+        </div>
+        <div class="segla__img--container">
+    <img src="C:\Majdinka\DCU MINT\Web design\Images\segla.jpg" alt="segla" id="segla__img"/>
+</div>
+</div>
+        <div class="places__content">
+    <h1>2. HUSFJELLET</h1>
+    <p>Husfjellet is more than just a hike; it's an unforgettable journey into the heart of Norway's natural beauty.</p>
+</div>
+<div class="husfjellet__img--container">
+    <img src="C:\Majdinka\DCU MINT\Web design\Images\hike.jpg" alt="Husfjellet" id="husfjellet__img" />
+</div>
+</div>
+<div class="places__content">
+    <h1>3. TETINDEN</h1>
+    <p>If you're looking for a destination that combines adventure with solitude, Tetinden is an excellent choice.</p>
+</div>
+<div class="tetinden__img--container">
+    <img src="C:\Majdinka\DCU MINT\Web design\Images\august.jpg" alt="Tetinden" id="tetinden__img" />
+</div>
+</div>
+<!--Footer Section -->
+<div class="footer__container">
+    <p class="website__rights">© Explore Senja 2024. All rights reserved </p>
+</div>
+   
+
+    <script>
+        const menu = document.querySelector('#mobile-menu');
+        const menuLinks = document.querySelector('.navbar__menu');
+
+        menu.addEventListener('click', function () {
+            menu.classList.toggle('is-active');
+            menuLinks.classList.toggle('active');
+        });
+
+        
+    </script>
+</body>
+</html>
